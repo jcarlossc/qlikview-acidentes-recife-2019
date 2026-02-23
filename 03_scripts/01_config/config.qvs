@@ -1,0 +1,88 @@
+﻿/******************************************************************
+    PROJETO: $(DocumentTitle())
+    ARQUIVO: config.qvs
+    DESCRIÇÃO: Configurações globais do projeto
+    RESPONSÁVEL: Carlos da Costa
+    DATA: $(Now())
+******************************************************************/
+
+/***************************************************************
+    1️º CONTROLE DE AMBIENTE
+***************************************************************/
+
+// Definir ambiente manualmente
+LET vEnv = 'DEV'; // DEV | HOM | PROD
+
+/***************************************************************
+    2️º INFORMAÇÕES DO PROJETO
+***************************************************************/
+
+LET vProjeto      = 'Projeto_Acidentes_Recife_2019';
+LET vVersao       = '1.0.0';
+LET vReloadDate   = Today();
+LET vReloadTime   = Now();
+
+/***************************************************************
+    3️º FORMATAÇÕES PADRÃO
+***************************************************************/
+
+SET ThousandSep='.';
+SET DecimalSep=',';
+SET MoneyFormat='R$ #.##0,00';
+SET DateFormat='DD/MM/YYYY';
+SET TimestampFormat='DD/MM/YYYY hh:mm:ss';
+
+/***************************************************************
+    4️º CAMINHOS BASE POR AMBIENTE
+***************************************************************/
+
+// Raiz do projeto
+LET vRoot = '..\';
+
+// Caminhos padrão
+LET vPathDataRaw          = '02_data\01_daw\';
+LET vPathDataStaging      = '02_data\02_staging\';
+LET vPathDataTrusted      = '02_data\03_trusted\';
+LET vPathDataFact         = '02_data\04_fact\';
+LET vPathScriptsConfig    = '03_scripts\01_config\config.qvs';
+LET vPathScriptsLogsTable = '03_scripts\02_logsTable\logs_table.qvs';
+LET vPathScriptsExtract   = '03_scripts\03_extract\raw.qvs';
+LET vPathScriptsTransform = '03_scripts\04_transform\stage.qvs';
+LET vPathScriptsTrusted   = '03_scripts\05_trusted\trusted.qvs';
+LET vPathScriptsLoad      = '03_scripts\06_load\fact.qvs';
+LET vPathScriptsUtils     = '03_scripts\07_utils\utils.qvs';
+LET vPathScriptsCalendar  = '03_scripts\08_calendar\calendar.qvs';
+LET vPathScriptsTime      = '03_scripts\09_time\time.qvs';
+LET vPathQvdRaw           = '04_qvd\01_qvdRaw\';
+LET vPathQvdStaging       = '04_qvd\02_qvdStaging\';
+LET vPathQvdTrusted       = '04_qvd\03_qvdTrusted\';
+LET vPathQvdFact          = '04_qvd\04_qvdFact\';
+LET vPathLog              = '07_logs\';
+
+
+
+
+/***************************************************************
+    5º CONTROLE DE EXECUÇÃO DO REALOAD
+***************************************************************/
+LET vReloadInicio = Now();
+LET vReloadId     = Timestamp(Now(), 'YYYYMMDD_hhmmss');
+
+/***************************************************************
+    6️º CONTROLE DE INCREMENTAL LOAD
+***************************************************************/
+
+LET vIsIncremental = 1;  // 1 = Incremental | 0 = Full Load
+LET vLastExecDate  = Date(Today()-1);
+
+/***************************************************************
+    7º TRACE INICIAL
+***************************************************************/
+
+TRACE ==================================================;
+TRACE INICIANDO PROJETO: $(vProjeto);
+TRACE VERSAO: $(vVersao);
+TRACE AMBIENTE: $(vEnv);
+TRACE DATA RELOAD: $(vReloadTime);
+TRACE ==================================================;
+
