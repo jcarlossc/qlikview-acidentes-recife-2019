@@ -111,5 +111,5 @@ LOAD
     '$(vReloadId)'                             AS Reload_ID,
     Timestamp(Now())                           AS Log_Timestamp,
     'INFO'                                     AS Log_Level,
-    'Término do processamento STAGE' AS Log_Message
+    'Término do processamento TRUSTED' AS Log_Message
 AUTOGENERATE 1;
