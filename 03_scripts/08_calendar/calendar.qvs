@@ -1,7 +1,7 @@
 ﻿/******************************************************************
     PROJETO: $(DocumentTitle())
     ARQUIVO: calendar.qvs
-    DESCRIÇÃO: Carga FACT com LOG externo
+    DESCRIÇÃO: Calendário mestre 
     RESPONSÁVEL: Carlos da Costa
     DATA: $(Now())
     
